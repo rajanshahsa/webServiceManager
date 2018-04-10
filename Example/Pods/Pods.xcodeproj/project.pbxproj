@@ -13,7 +13,6 @@
 		69C8D025F43461BC85D2CAD492F6A6D2 /* Pods-webserviceManager_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 45C0AB82DD7489AC04B08FC96E325C76 /* Pods-webserviceManager_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8147217E3AC335F934FA000EF6374592 /* Pods-webserviceManager_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A833C04FC91FB449B192938A7257A5 /* Pods-webserviceManager_Example-dummy.m */; };
 		893AEECDB01C2AD08F22BC2604BF0D84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		9CF7F7D9297B4D0FEDD80A7AEBABB402 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79230ABFC1C941B6108DCCEC6D670029 /* ReplaceMe.swift */; };
 		A48C7A493BA0E7C8FBA931357C33B4C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		A5954DE2C831C33DFF35A39BFF7C9A2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		A8E43D24D62D64B7AFEE666D112D45FB /* Pods-webserviceManager_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E4577ED1CA458D64222A025D93D980F /* Pods-webserviceManager_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,15 +30,15 @@
 
 /* Begin PBXFileReference section */
 		0086C9ED33EFC717B0C7CE9D1046C649 /* Pods-webserviceManager_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-webserviceManager_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		0C24DAC35D0E2CB9BBDDEF63DB782A97 /* webserviceManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = webserviceManager.framework; path = webserviceManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C24DAC35D0E2CB9BBDDEF63DB782A97 /* webserviceManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = webserviceManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E4577ED1CA458D64222A025D93D980F /* Pods-webserviceManager_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-webserviceManager_Tests-umbrella.h"; sourceTree = "<group>"; };
 		0F4ACC555E7E5350BD8DC1283948F381 /* Pods-webserviceManager_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-webserviceManager_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		35F290341317A9C979BCF08470373D08 /* Pods-webserviceManager_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-webserviceManager_Example-frameworks.sh"; sourceTree = "<group>"; };
 		3C3DDEDDAD6AF700567048A332376D58 /* webserviceManager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = webserviceManager.xcconfig; sourceTree = "<group>"; };
-		3E296366B4108347FDC5FF0922DE7089 /* Pods_webserviceManager_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_webserviceManager_Example.framework; path = "Pods-webserviceManager_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E296366B4108347FDC5FF0922DE7089 /* Pods_webserviceManager_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_webserviceManager_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C0AB82DD7489AC04B08FC96E325C76 /* Pods-webserviceManager_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-webserviceManager_Example-umbrella.h"; sourceTree = "<group>"; };
 		4FB6086A27C32E37846E670790FDF9BF /* Pods-webserviceManager_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-webserviceManager_Tests-dummy.m"; sourceTree = "<group>"; };
-		520C46FDF670837457B9FA2F1421B869 /* Pods-webserviceManager_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-webserviceManager_Example.modulemap"; sourceTree = "<group>"; };
+		520C46FDF670837457B9FA2F1421B869 /* Pods-webserviceManager_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-webserviceManager_Example.modulemap"; sourceTree = "<group>"; };
 		5BD4C79631D0C8AC15E9E14E77EB7E71 /* webserviceManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "webserviceManager-dummy.m"; sourceTree = "<group>"; };
 		5EED04721566DAD83E6295F2FEFCF8FA /* Pods-webserviceManager_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-webserviceManager_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -48,16 +47,16 @@
 		85199B849ED3D14FAE6C7CAB30A32DE4 /* Pods-webserviceManager_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-webserviceManager_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		87E1D80331B063BDEC643AA6E53A153A /* Pods-webserviceManager_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-webserviceManager_Example.release.xcconfig"; sourceTree = "<group>"; };
 		881154F17BAEDD56E4B8ACA5DE1789B8 /* Pods-webserviceManager_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-webserviceManager_Tests-resources.sh"; sourceTree = "<group>"; };
-		8AE5BA76B27E4C6E91CAC2DBA3AE6516 /* Pods_webserviceManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_webserviceManager_Tests.framework; path = "Pods-webserviceManager_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AE5BA76B27E4C6E91CAC2DBA3AE6516 /* Pods_webserviceManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_webserviceManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD807A28088F19656AA1753597DAC55 /* Pods-webserviceManager_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-webserviceManager_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		92617A09210FE83845E96524BF7A711A /* webserviceManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "webserviceManager-umbrella.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		94200D08CF4B71E5CE96BEEB9C7267FB /* Pods-webserviceManager_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-webserviceManager_Tests.modulemap"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94200D08CF4B71E5CE96BEEB9C7267FB /* Pods-webserviceManager_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-webserviceManager_Tests.modulemap"; sourceTree = "<group>"; };
 		9C2D2EF3632483FE8D84C005C3846F7A /* Pods-webserviceManager_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-webserviceManager_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		9D43DAA8CF75A02D51197CDCAC6FEE64 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD56B663CA71173C4A6B560CFCDCD124 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1A5AA19BEEA3E59BEC3B2FCA2A1CB32 /* webserviceManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "webserviceManager-prefix.pch"; sourceTree = "<group>"; };
-		B3892F2A19F330CE9ECC86CE66142BB3 /* webserviceManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = webserviceManager.modulemap; sourceTree = "<group>"; };
+		B3892F2A19F330CE9ECC86CE66142BB3 /* webserviceManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = webserviceManager.modulemap; sourceTree = "<group>"; };
 		C4BD136F060DD0AACBF8832A0FA6A8A4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D96E59A7BC4E3294A28A2D661696EC9E /* Pods-webserviceManager_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-webserviceManager_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		F6A833C04FC91FB449B192938A7257A5 /* Pods-webserviceManager_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-webserviceManager_Example-dummy.m"; sourceTree = "<group>"; };
@@ -321,7 +320,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CF7F7D9297B4D0FEDD80A7AEBABB402 /* ReplaceMe.swift in Sources */,
 				568A6AFF87F8320875739890AF46EF9D /* webserviceManager-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
