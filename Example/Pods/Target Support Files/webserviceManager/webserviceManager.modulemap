@@ -1,0 +1,6 @@
+framework module webserviceManager {
+  umbrella header "webserviceManager-umbrella.h"
+
+  export *
+  module * { export * }
+}
