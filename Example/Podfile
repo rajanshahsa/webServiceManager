@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'webserviceManager_Example' do
+  pod 'webserviceManager', :path => '../'
+
+  target 'webserviceManager_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
