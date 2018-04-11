@@ -100,6 +100,9 @@ class Webservice: NSObject {
         let url = URL(string: strUrl)!
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "GET"
+        if self.authToken != nil && self.authToken != "" {
+            request.setValue(self.authToken, forHTTPHeaderField: self.authTokenKey)
+        }
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
@@ -210,6 +213,9 @@ class Webservice: NSObject {
         let url = URL(string: strUrl)!
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "POST"
+        if self.authToken != nil && self.authToken != "" {
+            request.setValue(self.authToken, forHTTPHeaderField: self.authTokenKey)
+        }
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
         let body = NSMutableData()
