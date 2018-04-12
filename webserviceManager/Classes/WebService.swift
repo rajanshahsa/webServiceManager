@@ -1,4 +1,4 @@
-    //
+//
 //  WebService.swift
 //
 //
@@ -419,8 +419,7 @@ class Webservice: NSObject {
      - parameter strUrl :- Request URL
      */
     
-    func RequestForGet(strUrl: String, apiIdentifier: String,completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
-        self.apiIdentifier = apiIdentifier
+    func RequestForGet(strUrl: String,completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
         
         let url = URL(string: strUrl)!
         let request = NSMutableURLRequest(url: url)
@@ -459,8 +458,8 @@ class Webservice: NSObject {
         task.resume()
     }
     
-    func RequestForGetWithHeader(strUrl: String, apiIdentifier: String,completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
-        self.apiIdentifier = apiIdentifier
+    func RequestForGetWithHeader(strUrl: String,completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
+        
         
         guard self.authToken != nil  else {
             if self.delegate != nil {
@@ -519,9 +518,9 @@ class Webservice: NSObject {
      - parameter filePathKey :- name of parameter, which will be used for store file on server DB. (i.e Image)
      - parameter filePath   :- location of file, which will be stored on document directory.
      */
-    func RequestForPostAndFile(strUrl:String, postData:[String:Any], filePathKey:String, filePath:String, apiIdentifier: String,completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
+    func RequestForPostAndFile(strUrl:String, postData:[String:Any], filePathKey:String, filePath:String,completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
         
-        self.apiIdentifier = apiIdentifier
+        
         parmeters = postData
         
         let boundary = generateBoundaryString()
@@ -580,8 +579,8 @@ class Webservice: NSObject {
      - parameter filePathKey :- name of parameter, which will be used for store file on server DB. (i.e Image)
      - parameter aryFilesPath   :- location of file, which will be stored on document directory.
      */
-    func RequestForPostWithMultipleFile(strUrl:String, postData:[String:Any], aryFilesKey:NSArray, aryFilesPath:NSArray, apiIdentifier: String,completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
-        self.apiIdentifier = apiIdentifier
+    func RequestForPostWithMultipleFile(strUrl:String, postData:[String:Any], aryFilesKey:NSArray, aryFilesPath:NSArray,completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
+        
         parmeters = postData
         
         let boundary = generateBoundaryString()
@@ -674,8 +673,8 @@ class Webservice: NSObject {
      - parameter strUrl     :- Request URL
      - parameter postData   :- parameter for send to server.
      */
-    func RequestForPost(url:String, postData:[String:Any], apiIdentifier: String,completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
-        self.apiIdentifier = apiIdentifier
+    func RequestForPost(url:String, postData:[String:Any],completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
+        
         parmeters = postData
         
         let request = createRequest(parameter: postData, strURL: url as NSString)
@@ -732,8 +731,8 @@ class Webservice: NSObject {
      - parameter aryImageKey :- name of parameter, which will be used for store images on server DB. (i.e Image)
      - parameter aryImages   :- array of images.
      */
-    func RequestForPostWithImages(strUrl:String, postData:[String:Any], aryImageKey:NSArray, aryImages:NSArray, apiIdentifier: String,completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
-        self.apiIdentifier = apiIdentifier
+    func RequestForPostWithImages(strUrl:String, postData:[String:Any], aryImageKey:NSArray, aryImages:NSArray,completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
+        
         parmeters = postData
         
         let boundary = generateBoundaryString()
