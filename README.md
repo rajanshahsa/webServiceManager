@@ -11,6 +11,56 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+## How to use?
+
+Get Method with Delegate:-
+```Swift
+let ws = Webservice()
+ws.delegate = self
+ws.RequestForGet(strUrl:  "https://jsonplaceholder.typicode.com/posts", apiIdentifier: "get")
+```
+
+Get Method with completion Handler:-
+```Swift
+let ws = Webservice()
+ws.RequestForGet(strUrl: "https://jsonplaceholder.typicode.com/posts", apiIdentifier: "", completionHandler: { (response) in
+    print("response complition",response)
+}, errorCompletionHandler: { (error) in
+    print("response complition error",error.localizedDescription)
+}) { (response) in
+    print("response complition fail",response)
+}
+```
+
+Post Method with Delegate:-
+```Swift
+let ws = Webservice()
+let parameterDic = [
+  "title": "foo",
+  "body": "bar",
+  "userId": 1
+      ] as [String : Any]
+ws.delegate = self
+ws.RequestForPost(url: "https://jsonplaceholder.typicode.com/posts", postData: parameterDic, apiIdentifier: "post")
+```
+
+Post Method with completion Handler:-
+```Swift   
+let ws = Webservice()
+let parameterDic = [
+    "title": "foo",
+    "body": "bar",
+    "userId": 1
+    ] as [String : Any]
+ws.RequestForPost(url: "https://jsonplaceholder.typicode.com/posts", postData: parameterDic, apiIdentifier: "", completionHandler: { (response) in
+    print("response complition",response)
+}, errorCompletionHandler: { (error) in
+    print("response complition error",error.localizedDescription)
+}) { (response) in
+    print("response complition fail",response)
+}
+```
+
 ## Installation
 
 webserviceManager is available through [CocoaPods](http://cocoapods.org). To install
