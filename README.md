@@ -23,7 +23,7 @@ ws.RequestForGet(strUrl:  "https://jsonplaceholder.typicode.com/posts", apiIdent
 Get Method with completion Handler:-
 ```Swift
 let ws = Webservice()
-ws.RequestForGet(strUrl: "https://jsonplaceholder.typicode.com/posts", apiIdentifier: "", completionHandler: { (response) in
+ws.RequestForGet(strUrl: "https://jsonplaceholder.typicode.com/posts", completionHandler: { (response) in
     print("response complition",response)
 }, errorCompletionHandler: { (error) in
     print("response complition error",error.localizedDescription)
@@ -52,7 +52,7 @@ let parameterDic = [
     "body": "bar",
     "userId": 1
     ] as [String : Any]
-ws.RequestForPost(url: "https://jsonplaceholder.typicode.com/posts", postData: parameterDic, apiIdentifier: "", completionHandler: { (response) in
+ws.RequestForPost(url: "https://jsonplaceholder.typicode.com/posts", postData: parameterDic, completionHandler: { (response) in
     print("response complition",response)
 }, errorCompletionHandler: { (error) in
     print("response complition error",error.localizedDescription)
