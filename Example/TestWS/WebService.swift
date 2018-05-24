@@ -33,8 +33,8 @@ class Webservice: NSObject {
     var parmeters : [String:Any]!
     var apiIdentifier : String = ""
     var delegate : WebserviceDelegate?
-    var authToken : String!
-    var authTokenKey : String = "auth-token"
+    static var authToken : String!
+    static var authTokenKey : String = "auth-token"
     
     //MARK:- RequestForGet
     /**
@@ -60,7 +60,7 @@ class Webservice: NSObject {
                 
                 if let responseDictionary = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any] {
                     print(responseDictionary)
-                    if responseDictionary["status"] as! String == "success"{
+                    if responseDictionary["status"] as! Int == 0{
                         if self.delegate != nil {
                             self.delegate?.webserviceResponseSuccess(response: responseDictionary, apiIdentifier: self.apiIdentifier)
                         }
@@ -89,7 +89,7 @@ class Webservice: NSObject {
     func RequestForGetWithHeader(strUrl: String, apiIdentifier: String) -> Void {
         self.apiIdentifier = apiIdentifier
         
-        guard self.authToken != nil  else {
+        guard Webservice.authToken != nil  else {
             if self.delegate != nil {
                 let errorTemp = NSError(domain:"Auth Token missing", code:999, userInfo:nil)
                 self.delegate?.webserviceResponseError(error: errorTemp, apiIdentifier: self.apiIdentifier)
@@ -100,8 +100,8 @@ class Webservice: NSObject {
         let url = URL(string: strUrl)!
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "GET"
-        if self.authToken != nil && self.authToken != "" {
-            request.setValue(self.authToken, forHTTPHeaderField: self.authTokenKey)
+        if Webservice.authToken != nil && Webservice.authToken != "" {
+            request.setValue(Webservice.authToken, forHTTPHeaderField: Webservice.authTokenKey)
         }
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -114,7 +114,7 @@ class Webservice: NSObject {
             }
             do {
                 if let responseDictionary = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any] {
-                    if responseDictionary["status"] as! String == "1"{
+                    if responseDictionary["status"] as! Int == 1{
                         if self.delegate != nil {
                             self.delegate?.webserviceResponseSuccess(response: responseDictionary, apiIdentifier: self.apiIdentifier)
                         }
@@ -155,8 +155,8 @@ class Webservice: NSObject {
         let url = URL(string: strUrl)!
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "POST"
-        if self.authToken != nil && self.authToken != "" {
-            request.setValue(self.authToken, forHTTPHeaderField: self.authTokenKey)
+        if Webservice.authToken != nil && Webservice.authToken != "" {
+            request.setValue(Webservice.authToken, forHTTPHeaderField: Webservice.authTokenKey)
         }
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.httpBody = createBodyWithParametersAndFile(parameters: postData, filePathKey: filePathKey, paths: filePath,boundary: boundary) as Data
@@ -213,8 +213,8 @@ class Webservice: NSObject {
         let url = URL(string: strUrl)!
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "POST"
-        if self.authToken != nil && self.authToken != "" {
-            request.setValue(self.authToken, forHTTPHeaderField: self.authTokenKey)
+        if Webservice.authToken != nil && Webservice.authToken != "" {
+            request.setValue(Webservice.authToken, forHTTPHeaderField: Webservice.authTokenKey)
         }
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
@@ -427,14 +427,14 @@ class Webservice: NSObject {
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
-                    errorCompletionHandler(error!)
-             
+                errorCompletionHandler(error!)
+                
                 return
             }
             do {
                 if let responseDictionary = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any] {
                     print(responseDictionary)
-                    if responseDictionary["status"] as! String == "success"{
+                    if responseDictionary["status"] as! Int == 1 {
                         completionHandler(responseDictionary)
                         
                     }
@@ -450,9 +450,9 @@ class Webservice: NSObject {
             catch {
                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
                 print("responseString = \(responseString ?? "")")
-                    let errorTemp = NSError(domain:responseString!, code:999999, userInfo:nil)
-                    errorCompletionHandler(errorTemp)
-            
+                let errorTemp = NSError(domain:responseString!, code:999999, userInfo:nil)
+                errorCompletionHandler(errorTemp)
+                
             }
         }
         task.resume()
@@ -461,50 +461,41 @@ class Webservice: NSObject {
     func RequestForGetWithHeader(strUrl: String,completionHandler: @escaping ([String:Any]) -> Swift.Void, errorCompletionHandler: @escaping (Error) -> Swift.Void, failCompletionHandler: @escaping ([String:Any]) -> Swift.Void) -> Void {
         
         
-        guard self.authToken != nil  else {
-            if self.delegate != nil {
-                let errorTemp = NSError(domain:"Auth Token missing", code:999, userInfo:nil)
-                errorCompletionHandler(errorTemp)
-            }
+        guard Webservice.authToken != nil  else {
+            let errorTemp = NSError(domain:"Auth Token missing", code:999, userInfo:nil)
+            errorCompletionHandler(errorTemp)
             return
         }
         
         let url = URL(string: strUrl)!
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "GET"
-        if self.authToken != nil && self.authToken != "" {
-            request.setValue(self.authToken, forHTTPHeaderField: self.authTokenKey)
+        if Webservice.authToken != nil && Webservice.authToken != "" {
+            request.setValue(Webservice.authToken, forHTTPHeaderField: Webservice.authTokenKey)
         }
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
-                if self.delegate != nil {
-                    self.delegate?.webserviceResponseError(error: error!, apiIdentifier: self.apiIdentifier)
-                }
+                errorCompletionHandler(error!)
                 return
             }
             do {
                 if let responseDictionary = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any] {
-                    if responseDictionary["status"] as! String == "1"{
-                        if self.delegate != nil {
-                            completionHandler(responseDictionary)
-                        }
+                    if responseDictionary["status"] as! Int == 1{
+                        completionHandler(responseDictionary)
                     }
                     else {
-                        if self.delegate != nil {
-                            failCompletionHandler(responseDictionary)
-                        }
+                        failCompletionHandler(responseDictionary)
+                        
                     }
                 }
             }
             catch {
                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
                 print("responseString = \(responseString ?? "")")
-                if self.delegate != nil {
                     let errorTemp = NSError(domain:responseString!, code:999999, userInfo:nil)
                     errorCompletionHandler(errorTemp)
-                }
             }
         }
         task.resume()
@@ -528,44 +519,33 @@ class Webservice: NSObject {
         let url = URL(string: strUrl)!
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "POST"
-        if self.authToken != nil && self.authToken != "" {
-            request.setValue(self.authToken, forHTTPHeaderField: self.authTokenKey)
+        if Webservice.authToken != nil && Webservice.authToken != "" {
+            request.setValue(Webservice.authToken, forHTTPHeaderField: Webservice.authTokenKey)
         }
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.httpBody = createBodyWithParametersAndFile(parameters: postData, filePathKey: filePathKey, paths: filePath,boundary: boundary) as Data
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
-                
-                if self.delegate != nil {
-                    errorCompletionHandler(error!)
-                }
+                errorCompletionHandler(error!)
                 return
             }
             do {
                 if let responseDictionary = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any] {
                     let status = responseDictionary["status"] as! Bool
                     if status {
-                        if self.delegate != nil {
-                            completionHandler(responseDictionary)
-                        }
+                        completionHandler(responseDictionary)
                     }
                     else {
-                        
-                        if self.delegate != nil {
-                            failCompletionHandler(responseDictionary)
-                        }
+                        failCompletionHandler(responseDictionary)
                     }
                 }
             }
             catch {
                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
                 print("responseString = \(responseString ?? "")")
-                
-                if self.delegate != nil {
-                    let errorTemp = NSError(domain:responseString!, code:999999, userInfo:nil)
-                    errorCompletionHandler(errorTemp)
-                }
+                let errorTemp = NSError(domain:responseString!, code:999999, userInfo:nil)
+                errorCompletionHandler(errorTemp)
             }
         }
         task.resume()
@@ -587,8 +567,8 @@ class Webservice: NSObject {
         let url = URL(string: strUrl)!
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "POST"
-        if self.authToken != nil && self.authToken != "" {
-            request.setValue(self.authToken, forHTTPHeaderField: self.authTokenKey)
+        if Webservice.authToken != nil && Webservice.authToken != "" {
+            request.setValue(Webservice.authToken, forHTTPHeaderField: Webservice.authTokenKey)
         }
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
@@ -631,23 +611,16 @@ class Webservice: NSObject {
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
-                if self.delegate != nil {
                     errorCompletionHandler(error!)
-                }
-                return
+               return
             }
             do {
                 if let responseDictionary = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any] {
                     if responseDictionary["status"] as! String == "1"{
-                        if self.delegate != nil {
-                            completionHandler(responseDictionary)
-                        }
+                        completionHandler(responseDictionary)
                     }
                     else {
-                        
-                        if self.delegate != nil {
-                            failCompletionHandler(responseDictionary)
-                        }
+                        failCompletionHandler(responseDictionary)
                     }
                 }
             }
@@ -658,11 +631,9 @@ class Webservice: NSObject {
                     
                     // httpResponse.addException(nil,strResponse: responseString!)
                 }
-                if self.delegate != nil {
                     let errorTemp = NSError(domain:responseString!, code:999999, userInfo:nil)
                     errorCompletionHandler(errorTemp)
-                }
-            }
+           }
         }
         task.resume()
     }
@@ -684,39 +655,28 @@ class Webservice: NSObject {
         
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
-                if self.delegate != nil {
                     errorCompletionHandler(error!)
-                }
                 return
             }
             do {
                 if let responseDictionary = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any] {
                     let status = responseDictionary["status"] as! Bool
                     if status {
-                        if self.delegate != nil {
-                            completionHandler(responseDictionary)
-                        }
+                        completionHandler(responseDictionary)
                     }
                     else {
-                        
-                        if self.delegate != nil {
-                            failCompletionHandler(responseDictionary)
-                        }
+                        failCompletionHandler(responseDictionary)
                     }
                 }
                 else{
-                    if self.delegate != nil {
-                        self.delegate?.webserviceResponseFail(response: [:], apiIdentifier: self.apiIdentifier)
-                    }
+                    failCompletionHandler(["message":"Some Error occurred"])
                 }
             }
             catch {
                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
                 print("responseString = \(responseString ?? "")")
-                if self.delegate != nil {
                     let errorTemp = NSError(domain:responseString!, code:999999, userInfo:nil)
                     errorCompletionHandler(errorTemp)
-                }
             }
         }
         task.resume()
@@ -755,34 +715,27 @@ class Webservice: NSObject {
         
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil {
-                if self.delegate != nil {
-                    errorCompletionHandler(error!)
-                }
+                errorCompletionHandler(error!)
+                
                 return
             }
             do {
                 if let responseDictionary = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:Any] {
                     let status = responseDictionary["status"] as! Bool
                     if status {
-                        if self.delegate != nil {
-                            completionHandler(responseDictionary)
-                        }
+                        completionHandler(responseDictionary)
+                        
                     }
                     else {
-                        
-                        if self.delegate != nil {
-                            failCompletionHandler(responseDictionary)
-                        }
+                        failCompletionHandler(responseDictionary)
                     }
                 }
             }
             catch {
                 let responseString = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
                 print("responseString = \(responseString ?? "")")
-                if self.delegate != nil {
                     let errorTemp = NSError(domain:responseString!, code:999999, userInfo:nil)
                     errorCompletionHandler(errorTemp)
-                }
             }
         }
         task.resume()
@@ -795,8 +748,8 @@ class Webservice: NSObject {
         let url = URL(string: strURL as String)!
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "POST"
-        if self.authToken != nil && self.authToken != "" {
-            request.setValue(self.authToken, forHTTPHeaderField: self.authTokenKey)
+        if Webservice.authToken != nil && Webservice.authToken != "" {
+            request.setValue(Webservice.authToken, forHTTPHeaderField: Webservice.authTokenKey)
         }
         var requestBody = ""
         for key in parameter.keys {
